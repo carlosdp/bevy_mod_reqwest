@@ -97,7 +97,6 @@ impl ReqwestPlugin {
         mut requests: Query<(Entity, &mut ReqwestInflight)>,
     ) {
         for (entity, mut request) in requests.iter_mut() {
-            debug!("polling: {entity:?}");
             if let Some((result, parts)) = request.poll() {
                 match result {
                     Ok(body) => {
